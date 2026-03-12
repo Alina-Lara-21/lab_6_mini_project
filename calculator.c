@@ -1,39 +1,26 @@
-#include <stdio.h>
-#include < stdlib.h>
+#include <math.h>
 
-int main() {
-    int a, b; 
-    char op; 
-    int result; 
+double calc_add      (double a, double b) { 
+    return a + b;
+}
 
-    char *query = getenv("QUERY_STRING");
-    if (query == NULL) {
-        printf("No input recived."); 
-        return 0;
-    }
+double calc_subtract (double a, double b) { 
+    return a - b;
+}
 
-    sscanf(query, "a=%d&b=%d&op=%c", &a, &b, &op);
+double calc_multiply (double a, double b) { 
+    return a * b;
+}
 
-    switch (op) {
-        case '+':
-            result = a + b; 
-            break;
-        case '-':
-            result = a - b; 
-            break;
-        case '*':
-            result = a * b; 
-            break;
-        case '/':
-            if (b == 0) {
-                printf("Division by zero is not allowed."); 
-                return 0;
-            }
-            result = a / b; 
-            break;
-        default:
-            printf("Invalid operator."); 
-            return 0;
-    }
-    return 0;
+double calc_divide  (double a, double b) { 
+    return a / b; 
+} 
+
+double calc_modulo  (double a, double b) { 
+    return fmod(a, b);
+}
+
+/* power operation (a^b) */
+double calc_power   (double a, double b) {
+    return pow(a, b);
 }
