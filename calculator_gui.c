@@ -5,6 +5,7 @@
 #include "calculator.h" 
 
 GtkWidget *display;
+GtkWidget *expression_label;
 double num1 = 0;
 char   op   = '\0';
 int    has_num1 = 0;
@@ -21,6 +22,7 @@ void click(GtkButton *btn, gpointer data) {
 
     if (k == 'C') {
         gtk_entry_set_text(GTK_ENTRY(display), "");
+        gtk_label_set_text(GTK_LABEL(expression_label), "");
         num1 = 0; op = '\0'; has_num1 = 0;
 
     } else if (strcmp(key, "\xe2\x86\x90") == 0) {            /* ← */
@@ -34,11 +36,15 @@ void click(GtkButton *btn, gpointer data) {
         op   = (strcmp(key,"\xc3\xb7")==0) ? '/' :
                (strcmp(key,"\xc3\x97")==0) ? '*' : k;
         has_num1 = 1;
+        char expr[256];
+        snprintf(expr, sizeof(expr), "%g %c ", num1, op);
+        gtk_label_set_text(GTK_LABEL(expression_label), expr);
         gtk_entry_set_text(GTK_ENTRY(display), "");
 
     } else if (k == '=') {
         if (!has_num1 || op == '\0' || len == 0) return;
         double b = atof(buf);
+        double old_num1 = num1;
         double result = 0;
         switch (op) {
             case '+': result = calc_add     (num1, b); break;
@@ -51,6 +57,9 @@ void click(GtkButton *btn, gpointer data) {
         char out[64];
         snprintf(out, sizeof(out), result == (int)result ? "%.0f" : "%g", result);
         gtk_entry_set_text(GTK_ENTRY(display), out);
+        char expr[256];
+        snprintf(expr, sizeof(expr), "%g %c %g = %g", old_num1, op, b, result);
+        gtk_label_set_text(GTK_LABEL(expression_label), expr);
         num1 = result; op = '\0';
 
     } else if (k == '.' && strchr(buf, '.')) {
@@ -104,8 +113,13 @@ int main(int argc, char *argv[]) {
     gtk_container_set_border_width(GTK_CONTAINER(vbox), 10);
     gtk_container_add(GTK_CONTAINER(win), vbox);
 
+    expression_label = gtk_label_new("");
+    gtk_label_set_xalign(GTK_LABEL(expression_label), 1.0f);
+    gtk_box_pack_start(GTK_BOX(vbox), expression_label, FALSE, FALSE, 6);
+
     display = gtk_entry_new();
     gtk_entry_set_alignment(GTK_ENTRY(display), 1.0f);
+    gtk_widget_set_size_request(display, -1, 50);
     gtk_box_pack_start(GTK_BOX(vbox), display, FALSE, FALSE, 6);
 
     GtkWidget *grid = gtk_grid_new();
