@@ -1,3 +1,7 @@
+//old version of calc gui in c 
+//decided to switch to HTML CSS JS for simplicity 
+//kept old logic and basic function format
+
 #include <gtk/gtk.h>
 #include <stdlib.h>
 #include <string.h>
