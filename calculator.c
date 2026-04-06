@@ -1,3 +1,4 @@
+//old version
 #include <math.h>
 
 double calc_add      (double a, double b) { 
