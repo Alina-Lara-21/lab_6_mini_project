@@ -35,6 +35,19 @@ python main.py
 4. View the calculation result
 5. Keep going or select 7 to exit
 
+## Keyboard Shortcuts (Web Calculator)
+
+- `0-9`: enter numbers
+- `+`, `-`, `*`, `/`: operators
+- `.`: decimal point
+- `Enter` or `=`: calculate result
+- `Backspace`: delete last character
+- `Escape`: clear all
+- `%`: percent
+- `P`: pi constant
+- `E`: e constant
+- `S`, `C`, `T`, `R`, `L`, `N`: sin, cos, tan, sqrt, log, ln
+
 
 ## Author
 
