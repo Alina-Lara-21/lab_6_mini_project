@@ -9,7 +9,7 @@ This calculator supports basic arithmetic operations as well as scientific funct
 - Multiplication (×)
 - Division (÷)
 - Decimal input
-- Delete last character (backspace)
+- Delete last character (Backspace)
 - Clear all input (C)
 - Toggle positive/negative (+/-)
 - Percent (%)
