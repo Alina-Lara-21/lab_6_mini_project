@@ -36,12 +36,10 @@ This calculator supports basic arithmetic operations as well as scientific funct
 
 ## Project Structure
 calculator-app/
-|
-|--index.html #main HTML layout 
-|--styles.css #styling 
-|__script.js #logic and keyboard handling 
+- index.html #main HTML layout 
+- styles.css #styling 
+- script.js #logic and keyboard handling 
 
----
 ## How to Run
 
 1. Download or clone the project.
