@@ -1,6 +1,6 @@
 # Calculator Web App
 A responsive calculator built using **HTML, CSS, and JavaScript**.  
-This calculator supports basic arithmetic operations as well as scientific functions like trigonometry, logarithms, square roots, and constants (π and e),.
+This calculator supports basic arithmetic operations as well as scientific functions like trigonometry, logarithms, square roots, and constants (π and e).
 
 ## Features
 ### Basic Calculator Functions
